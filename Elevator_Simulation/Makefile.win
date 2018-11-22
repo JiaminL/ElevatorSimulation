@@ -1,0 +1,43 @@
+# Project: Elevator_Simulation
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = EleStack.o Elevator.o EventList.o People.o Queue.o simulation.o
+LINKOBJ  = EleStack.o Elevator.o EventList.o People.o Queue.o simulation.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Elevator_Simulation.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+EleStack.o: EleStack.cpp
+	$(CPP) -c EleStack.cpp -o EleStack.o $(CXXFLAGS)
+
+Elevator.o: Elevator.cpp
+	$(CPP) -c Elevator.cpp -o Elevator.o $(CXXFLAGS)
+
+EventList.o: EventList.cpp
+	$(CPP) -c EventList.cpp -o EventList.o $(CXXFLAGS)
+
+People.o: People.cpp
+	$(CPP) -c People.cpp -o People.o $(CXXFLAGS)
+
+Queue.o: Queue.cpp
+	$(CPP) -c Queue.cpp -o Queue.o $(CXXFLAGS)
+
+simulation.o: simulation.cpp
+	$(CPP) -c simulation.cpp -o simulation.o $(CXXFLAGS)
